@@ -46,15 +46,15 @@ jobs:
       # Sigstore is an open source security project sponsored by the OpenSSF
       # (Open Software Security Foundation).
       # More details on image signing: https://docs.docker.com/engine/security/trust/
-      - name: Install cosign
-        uses: sigstore/cosign-installer@536b37ec5d5b543420bdfd9b744c5965bd4d8730
-        with:
-          cosign-release: 'v1.8.0'
+      #- name: Install cosign
+      #  uses: sigstore/cosign-installer@536b37ec5d5b543420bdfd9b744c5965bd4d8730
+      #  with:
+      #    cosign-release: 'v1.8.0'
 
       # If you're building cross-platform, QEMU may be required. In this case,
       # it's needed to build the ARM image.
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+      #- name: Set up QEMU
+      #  uses: docker/setup-qemu-action@v2
 
       # Configure Docker Buildx using version 2.0.0 of the Action
       # This provides extended build capabilities with BuildKit (including
@@ -115,9 +115,9 @@ jobs:
       # possible to provide a --key parameter as well as annotations (-a) to be
       # included in the signature. For more details on the keyless approach,
       # see: https://github.com/sigstore/cosign/blob/main/KEYLESS.md
-      - name: Sign the published Docker image
-        env:
-          COSIGN_EXPERIMENTAL: "true"
+      #- name: Sign the published Docker image
+      #  env:
+      #    COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
-        run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
+       # run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
